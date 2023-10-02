@@ -119,7 +119,7 @@ require("telescope").setup {
       hijack_netrw = false,
       use_fd = true,
       git_status = true,
-      mappings = {
+      default_mappings = {
         ["i"] = {
           ["<A-c>"] = fb_actions.create,
           ["<S-CR>"] = fb_actions.create_from_prompt,
@@ -153,6 +153,7 @@ require("telescope").setup {
           ["s"] = fb_actions.toggle_all,
         },
       },
+      mappings = {},
     },
   },
 }
@@ -183,7 +184,7 @@ vim.api.nvim_set_keymap(
 
 Alternatively, you can also access the picker as a function via `require "telescope".extensions.file_browser.file_browser` natively in lua.
 
-## Mappings
+## Default mappings
 
 `telescope-file-browser.nvim` comes with a lot of default mappings for discoverability. You can use `telescope`'s `which_key` (insert mode: `<C-/>`, normal mode: `?`) to list mappings attached to your picker.
 
@@ -211,6 +212,8 @@ Alternatively, you can also access the picker as a function via `require "telesc
 | `<bs>/`         | backspace            | With an empty prompt, goes to parent dir. Otherwise acts normally                |
 
 `fb_actions.create_from_prompt` requires that your terminal recognizes these keycodes (e.g. kitty). See `:h tui-input` for more information.
+
+You can also completely overwrite default mappings by using the field `default_mappings`.
 
 #### Remappings
 
