@@ -9,7 +9,7 @@ local config = {}
 _TelescopeFileBrowserConfig = {
   use_ui_input = true,
   quiet = false,
-  mappings = {
+  default_mappings = {
     ["i"] = {
       ["<A-c>"] = fb_actions.create,
       ["<S-CR>"] = fb_actions.create_from_prompt,
@@ -117,6 +117,8 @@ local hijack_netrw = function()
 end
 
 config.setup = function(opts)
+  config.values.mappings = opts.default_mappings or config.values.default_mappings
+
   -- TODO maybe merge other keys as well from telescope.config
   config.values.mappings =
     vim.tbl_deep_extend("force", config.values.mappings, require("telescope.config").values.mappings)
